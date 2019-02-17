@@ -1,4 +1,12 @@
 Rails.application.routes.draw do
+  namespace :admin do
+      resources :posts
+      resources :users
+      resources :blogs
+      resources :admin_users
+
+      root to: "posts#index"
+    end
   resources :posts
   devise_for :users
   root to: 'static#home'
