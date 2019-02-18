@@ -34,6 +34,7 @@ class PostDashboard < Administrate::BaseDashboard
   SHOW_PAGE_ATTRIBUTES = [
     :user,
     :status,
+    :id,
     :date,
     :rationale,
     :created_at,
