@@ -3,6 +3,14 @@ namespace :notification do
 
   task sms: :environment do
     puts 'I am in a rake task!'
+    if Time.now.sunday?
+      employees = Employee.all
+      notification_message = "Please log into the overtime management dashboard to request overtime or confirm your hours for last week: https://wlp-overtime.herokuapp.com"
+
+      employees.each do |employee|
+        SmsTool.send_sms(number: employee.phone, message: notification_message)
+      end
+    end
     # 1. Schedul to run at sunday at 5pm
     # 2. Iterate over all employees
     # 3. Skip AdminUsers
